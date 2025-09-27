@@ -22,6 +22,9 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/") {
         name = "papermc"
     }
+    maven("https://jitpack.io") {
+        name = "JitPack"
+    }
     maven("https://repo.xenondevs.xyz/releases")
 }
 
