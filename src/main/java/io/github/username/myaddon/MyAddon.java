@@ -26,7 +26,7 @@ public class MyAddon extends JavaPlugin implements PylonAddon {
 
     @Override
     public @NotNull JavaPlugin getJavaPlugin() {
-        return instance;
+        return this;
     }
 
     @Override
