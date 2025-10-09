@@ -2,7 +2,7 @@ import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 
 // Specify what plugins to use
 plugins {
-    java
+    kotlin("jvm") version "2.2.0"
     // IntelliJ plugin
     idea
     // used to package needed dependencies into the jar
@@ -11,8 +11,6 @@ plugins {
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
     // used to run a test server locally
     id("xyz.jpenilla.run-paper") version "2.3.0"
-    // lombok (provides useful annotations)
-    id("io.freefair.lombok") version "8.13.1"
 }
 
 // Specify the 'group' (eg: io.github.pylonmc.myaddon)
@@ -36,6 +34,7 @@ val baseVersion = project.properties["pylon-base.version"] as String
 
 // Download dependencies
 dependencies {
+    library(kotlin("stdlib"))
     compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
     compileOnly("io.github.pylonmc:pylon-core:$coreVersion")
     compileOnly("io.github.pylonmc:pylon-base:$baseVersion")
@@ -49,9 +48,9 @@ idea {
     }
 }
 
-java {
-    // Use Java 21
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+kotlin {
+    // Target JVM 21
+    jvmToolchain(21)
 }
 
 // Configuration for the output JAR

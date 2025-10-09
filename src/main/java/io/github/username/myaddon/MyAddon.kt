@@ -1,41 +1,33 @@
-package io.github.username.myaddon;
+package io.github.username.myaddon
 
-import io.github.pylonmc.pylon.core.addon.PylonAddon;
-import lombok.Getter;
-import org.bukkit.Material;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
+import io.github.pylonmc.pylon.core.addon.PylonAddon
+import org.bukkit.Material
+import org.bukkit.plugin.java.JavaPlugin
+import java.util.Locale
 
-import java.util.Locale;
-import java.util.Set;
-
-@SuppressWarnings("unused")
-public class MyAddon extends JavaPlugin implements PylonAddon {
-
-    // The `instance` field stores the instance of the addon (there's only ever one)
-    @Getter private static MyAddon instance;
+@Suppress("unused")
+class MyAddon : JavaPlugin(), PylonAddon {
 
     // Called when our plugin is enabled
-    @Override
-    public void onEnable() {
-        instance = this;
+    override fun onEnable() {
+        _instance = this
 
         // Every Pylon addon must call this BEFORE doing anything Pylon-related
-        registerWithPylon();
+        registerWithPylon()
     }
 
-    @Override
-    public @NotNull JavaPlugin getJavaPlugin() {
-        return this;
-    }
+    override val javaPlugin: JavaPlugin = this
 
-    @Override
-    public @NotNull Set<@NotNull Locale> getLanguages() {
-        return Set.of(Locale.ENGLISH);
-    }
+    override val languages: Set<Locale> = setOf(Locale.ENGLISH)
 
-    @Override
-    public @NotNull Material getMaterial() {
-        return Material.DEAD_BUSH;
+    override val material: Material = Material.DEAD_BUSH
+
+    companion object {
+        // Stores the instance of the addon (there's only ever one)
+        private var _instance: MyAddon? = null
+
+        // The public-facing, non-null instance of the addon
+        val instance: MyAddon
+            get() = _instance ?: throw IllegalStateException("Plugin is not initialized yet")
     }
 }
