@@ -1,4 +1,4 @@
-package io.github.pylonmc.myaddon;
+package io.github.username.myaddon;
 
 import io.github.pylonmc.pylon.core.addon.PylonAddon;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Locale;
 import java.util.Set;
 
-
+@SuppressWarnings("unused")
 public class MyAddon extends JavaPlugin implements PylonAddon {
 
     // The `instance` field stores the instance of the addon (there's only ever one)

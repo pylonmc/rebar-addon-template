@@ -1,1 +1,1 @@
-rootProject.name = "my-addon"
+rootProject.name = "MyAddon"

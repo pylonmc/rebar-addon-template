@@ -5,6 +5,8 @@ plugins {
     java
     // IntelliJ plugin
     idea
+    // used to package needed dependencies into the jar
+    id("com.gradleup.shadow") version "9.2.2"
     // used to generate plugin.yml
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
     // used to run a test server locally
@@ -52,9 +54,14 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
 
+// Configuration for the output JAR
+tasks.shadowJar {
+    archiveClassifier = ""
+}
+
 // Generate the plugin.yml file using the bukkit gradle plugin
 bukkit {
-    name = project.properties["name"] as String
+    name = project.name
     main = project.properties["main-class"] as String
     version = project.version.toString()
     apiVersion = "1.21"
