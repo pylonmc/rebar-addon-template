@@ -1,4 +1,4 @@
-# Rebar Addon Template
+# Rebar Addon Template (OUDATED)
 
 This repo contains everything you need to get started with making a Rebar addon. For the Kotlin version, see [here](https://github.com/pylonmc/rebar-addon-template/tree/kotlin).
 
